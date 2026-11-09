@@ -1,0 +1,487 @@
+<title>Inches Sports Performance</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&family=Cairo:wght@400;600;700;800&display=swap">
+<style>
+/* Layout: black brand ground, slanted red "inch" slashes as the one motif; mobile-first single column, sticky WhatsApp bar */
+:root{
+  --ink:#050303; --panel:#141210; --panel2:#1d1a18; --line:#2c2724;
+  --red:#c72333; --red-deep:#9e1726; --white:#ffffff; --mute:#b9b3b0; --grey:#dddada;
+  --ok:#1fa855;
+  --display:'Open Sans',Arial,sans-serif; --body:'Open Sans',Arial,sans-serif;
+  color-scheme:dark;
+}
+html[lang="ar"]{ --display:'Cairo','Open Sans',Arial,sans-serif; --body:'Cairo','Open Sans',Arial,sans-serif }
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--white);font-family:var(--body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:14px}
+.mark{font-family:'Open Sans',Arial,sans-serif;font-style:italic;font-weight:800;font-size:22px;letter-spacing:.5px;color:var(--red);display:flex;align-items:center;gap:8px;direction:ltr}
+.mark i{display:inline-block;width:7px;height:22px;background:var(--white);transform:skewX(-22deg)}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;direction:ltr}
+.lang button{all:unset;cursor:pointer;padding:6px 14px;font-weight:700;font-size:13px;color:var(--mute);font-family:'Open Sans','Cairo',sans-serif}
+.lang button[aria-pressed="true"]{background:var(--red);color:var(--white)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;top:-20%;inset-inline-end:-60px;width:220px;height:140%;background:var(--red);transform:skewX(-22deg);opacity:.95}
+html[dir="rtl"] .hero::before{transform:skewX(22deg)}
+.hero::after{content:"";position:absolute;top:-20%;inset-inline-end:180px;width:16px;height:140%;background:var(--white);transform:skewX(-22deg)}
+html[dir="rtl"] .hero::after{transform:skewX(22deg)}
+.hero .wrap{position:relative;padding-block:28px 40px}
+.where{font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--red)}
+html[lang="ar"] .where{letter-spacing:0;font-size:14px}
+h1{font-family:var(--display);font-style:italic;font-weight:800;font-size:clamp(38px,10vw,72px);line-height:1;margin:10px 0 14px;max-width:11ch;text-wrap:balance;text-transform:uppercase}
+html[lang="ar"] h1{font-style:normal;text-transform:none;line-height:1.25;max-width:12ch}
+.lede{max-width:52ch;color:var(--grey);font-size:17px;margin:0 0 22px;padding-inline-end:120px}
+.motto{font-style:italic;font-weight:800;letter-spacing:1px;direction:ltr;display:inline-block}
+.motto b{color:var(--red)}
+.cta-row{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 18px;border-radius:4px;font-weight:800;text-decoration:none;font-size:15px}
+.btn-wa{background:var(--ok);color:#fff}
+.btn-ghost{border:1px solid var(--line);color:var(--white);background:var(--panel)}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* sections */
+section{padding-block:40px 8px}
+.eyebrow{display:flex;align-items:center;gap:10px;font-weight:800;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--red);margin-bottom:6px}
+html[lang="ar"] .eyebrow{letter-spacing:0;font-size:14px}
+.eyebrow::before{content:"";width:6px;height:16px;background:var(--red);transform:skewX(-22deg)}
+h2{font-family:var(--display);font-weight:800;font-size:clamp(26px,6vw,36px);line-height:1.15;margin:0 0 18px;text-wrap:balance}
+.intro p{max-width:62ch;color:var(--grey);margin:0 0 12px}
+
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.svc article{background:var(--panel);border:1px solid var(--line);padding:18px;border-radius:4px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.svc h3{margin:0;font-size:19px;font-weight:800}
+.svc p{margin:0;color:var(--mute);font-size:15px}
+.svc .who{font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--red)}
+html[lang="ar"] .svc .who{letter-spacing:0;font-size:13px}
+
+
+.fmt{display:flex;gap:6px;margin-top:auto;padding-top:8px}
+.f{font-size:12px;font-weight:800;padding:3px 10px;border-radius:3px}
+.f-pt{background:var(--red);color:#fff}
+.f-gt{background:var(--white);color:var(--ink)}
+.modesH{margin:22px 0 10px;font-size:17px;font-weight:800}
+.modes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:10px}
+.mode{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:4px;background:var(--panel2);border:1px solid var(--line);border-inline-start:4px solid var(--red)}
+.mode.m-gt{border-inline-start-color:var(--white)}
+.mode b{font-family:'Open Sans',Arial,sans-serif;font-style:italic;font-weight:800;font-size:34px;line-height:1;color:var(--red)}
+.mode.m-gt b{color:var(--white)}
+.mode h4{margin:0 0 4px;font-size:17px;font-weight:800}
+.mode p{margin:0;color:var(--mute);font-size:14px}
+
+/* classes */
+.groups{display:flex;flex-direction:column;gap:26px}
+.group h3{margin:0 0 10px;font-size:15px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--grey);display:flex;align-items:center;gap:10px}
+html[lang="ar"] .group h3{letter-spacing:0;font-size:17px}
+.dot{width:10px;height:10px;border-radius:2px;flex:none}
+.cls{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px}
+.c{background:var(--panel);border-radius:4px;padding:14px 16px;border-inline-start:4px solid var(--tag);min-width:0}
+.c h4{margin:0 0 4px;font-family:'Open Sans',Arial,sans-serif;font-style:italic;font-weight:800;font-size:20px;text-transform:uppercase;letter-spacing:.3px}
+.c .tags{font-size:13px;font-weight:700;color:var(--white);opacity:.9}
+.c p{margin:6px 0 0;font-size:14px;color:var(--mute)}
+.g-fit{--tag:var(--white)} .g-ath{--tag:var(--red)} .g-kid{--tag:#e8a33a}
+
+/* schedule */
+.days{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;scrollbar-width:none}
+.days::-webkit-scrollbar{display:none}
+.days button{all:unset;cursor:pointer;flex:none;padding:9px 14px;border-radius:4px;background:var(--panel);border:1px solid var(--line);font-weight:700;font-size:14px;color:var(--grey);position:relative}
+.days button[aria-pressed="true"]{background:var(--red);border-color:var(--red);color:#fff}
+.days button .today{display:block;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;opacity:.85}
+html[lang="ar"] .days button .today{letter-spacing:0;font-size:11px}
+.slots{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.slot{display:grid;grid-template-columns:92px 1fr;gap:14px;align-items:center;background:var(--panel);border-radius:4px;padding:12px 14px;border-inline-start:4px solid var(--tag)}
+.slot time{font-weight:800;font-size:17px;font-variant-numeric:tabular-nums;direction:ltr;text-align:start;white-space:nowrap}
+.slot .n{font-weight:800;font-size:17px}
+.slot .g{font-size:12px;color:var(--mute);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-size:13px;color:var(--mute)}
+.legend span{display:flex;align-items:center;gap:6px}
+.month{color:var(--mute);font-size:14px;margin:-8px 0 14px}
+
+
+/* pricing */
+.how{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:10px;margin-bottom:18px}
+.how div{background:var(--panel);border-radius:4px;padding:14px 16px;display:flex;align-items:center;gap:14px}
+.how b{font-family:'Open Sans',Arial,sans-serif;font-style:italic;font-weight:800;font-size:34px;line-height:1;color:var(--red);font-variant-numeric:tabular-nums}
+.how span{font-weight:700;font-size:15px}
+.how small{display:block;color:var(--mute);font-weight:600;font-size:13px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:12px}
+.seg button{all:unset;cursor:pointer;padding:9px 14px;font-weight:700;font-size:14px;color:var(--mute)}
+.seg button[aria-pressed="true"]{background:var(--white);color:var(--ink)}
+.pk{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:10px}
+.p{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:14px 16px;display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;min-width:0}
+.chip{grid-column:1/-1;justify-self:start;padding:3px 12px;border-radius:3px;font-weight:800;font-size:13px;letter-spacing:2px;text-transform:uppercase;font-family:'Open Sans',Arial,sans-serif;margin-bottom:6px}
+.p .pts{font-weight:800;font-size:22px;font-variant-numeric:tabular-nums}
+.p .pr{font-weight:800;font-size:22px;text-align:end;font-variant-numeric:tabular-nums;white-space:nowrap}
+.p .pp{grid-column:2;text-align:end;font-size:13px;color:var(--red);font-weight:800;white-space:nowrap}
+.p .eq{grid-column:1/-1;font-size:13px;color:var(--mute);border-top:1px solid var(--line);padding-top:8px;margin-top:6px}
+.calc{margin-top:16px;background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:16px;display:flex;flex-direction:column;gap:10px}
+.calc label{font-weight:700;font-size:14px}
+.calc .row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.calc input{width:110px;padding:10px 12px;border-radius:4px;border:1px solid var(--line);background:var(--ink);color:var(--white);font:inherit;font-weight:800;font-size:18px}
+.calc output{font-weight:800;font-size:20px;font-variant-numeric:tabular-nums}
+.calc .why{font-size:13px;color:var(--mute)}
+.rules{margin:18px 0 0;padding-inline-start:20px;color:var(--grey);display:flex;flex-direction:column;gap:6px}
+.phone{display:inline-flex;align-items:center;gap:8px;direction:ltr;font-weight:800;user-select:all}
+.copy{all:unset;cursor:pointer;font-size:12px;font-weight:700;padding:4px 10px;border:1px solid var(--line);border-radius:4px;color:var(--grey)}
+
+/* join */
+.join{background:var(--panel2);border:1px solid var(--line);border-radius:4px;padding:22px;margin-top:8px;display:flex;flex-direction:column;gap:12px}
+.join ol{margin:0;padding-inline-start:20px;color:var(--grey)}
+.join li{margin-bottom:4px}
+
+.bigsteps{list-style:none;padding:0;margin:0;counter-reset:st;display:flex;flex-direction:column;gap:10px}
+.bigsteps li{counter-increment:st;display:flex;gap:12px;align-items:flex-start;color:var(--grey)}
+.bigsteps li::before{content:counter(st);flex:none;width:30px;height:30px;display:grid;place-items:center;background:var(--red);color:#fff;font-weight:800;font-style:italic;transform:skewX(-12deg);border-radius:2px}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:10px}
+.path{background:var(--panel);border-radius:4px;padding:14px 16px;border-inline-start:4px solid var(--red);min-width:0}
+.path.m-gt{border-inline-start-color:var(--white)}
+.path h3{margin:0 0 6px;font-size:17px;font-weight:800}
+.path ol{margin:0;padding-inline-start:20px;color:var(--grey);font-size:15px}
+.path .note{margin:10px 0 0;padding:8px 10px;background:rgba(199,35,51,.15);border-radius:3px;font-size:14px;font-weight:700}
+.coach{margin:0;padding:12px 14px;border:1px solid var(--red);border-radius:4px;font-weight:700}
+.q{margin:0;color:var(--mute);font-size:14px}
+footer{padding-block:36px 110px;color:var(--mute);font-size:13px}
+footer .links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:10px}
+footer a{color:var(--grey)}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(5,3,3,.92);backdrop-filter:blur(8px);border-top:1px solid var(--line);
+  padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));z-index:5}
+.bar .btn{width:100%;justify-content:center;max-width:860px;margin:0 auto;display:flex}
+
+@media (max-width:520px){
+  .hero::before{width:120px;inset-inline-end:-50px}
+  .hero::after{inset-inline-end:84px;width:10px}
+  .lede{padding-inline-end:56px;font-size:16px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .slots{animation:in .25s ease-out}
+  @keyframes in{from{transform:translateY(4px)}to{transform:none}}
+}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="top">
+      <div class="mark" aria-label="Inches">INCHES<i></i></div>
+      <div class="lang" role="group" aria-label="Language">
+        <button id="lang-en" data-lang="en" aria-pressed="true">EN</button>
+        <button id="lang-ar" data-lang="ar" aria-pressed="false">عربي</button>
+      </div>
+    </div>
+    <div class="where" data-t="where"></div>
+    <h1 data-t="h1"></h1>
+    <p class="lede" data-t="lede"></p>
+    <div class="cta-row">
+      <a class="btn btn-wa wa" href="https://wa.me/message/ZJIHILSNG2MVH1" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.3 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 .9c.3.2.5.2.5.4.1.1.1.7-.1 1.4z"/></svg><span data-t="cta"></span></a>
+      <a class="btn btn-ghost" href="#schedule" data-t="seeSched"></a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro" id="about">
+    <div class="eyebrow" data-t="aboutEye"></div>
+    <h2 data-t="aboutH"></h2>
+    <p data-t="about1"></p>
+    <p data-t="about2"></p>
+  </section>
+
+  <section id="services">
+    <div class="eyebrow" data-t="svcEye"></div>
+    <h2 data-t="svcH"></h2>
+    <div class="svc" id="svc"></div>
+    <h3 class="modesH" data-t="modesH"></h3>
+    <div class="modes" id="modes"></div>
+  </section>
+
+  <section id="classes">
+    <div class="eyebrow" data-t="clsEye"></div>
+    <h2 data-t="clsH"></h2>
+    <div class="groups" id="groups"></div>
+  </section>
+
+  <section id="schedule">
+    <div class="eyebrow" data-t="schEye"></div>
+    <h2 data-t="schH"></h2>
+    <p class="month" data-t="month"></p>
+    <div class="days" id="days" role="group"></div>
+    <ul class="slots" id="slots"></ul>
+    <div class="legend" id="legend"></div>
+  </section>
+
+  <section id="prices">
+    <div class="eyebrow" data-t="prEye"></div>
+    <h2 data-t="prH"></h2>
+    <div class="how">
+      <div><b>1</b><span><span data-t="howG"></span><small data-t="howGs"></small></span></div>
+      <div><b>2</b><span><span data-t="howPT"></span><small data-t="howPTs"></small></span></div>
+    </div>
+    <div class="seg" role="group" aria-label="Price type">
+      <button id="who-std" data-who="std" aria-pressed="true" data-t="std"></button>
+      <button id="who-mem" data-who="mem" aria-pressed="false" data-t="mem"></button>
+    </div>
+    <div class="pk" id="pk"></div>
+    <div class="calc">
+      <label for="custom" data-t="calcL"></label>
+      <div class="row"><input id="custom" type="number" min="1" max="999" value="15" inputmode="numeric"><output id="customOut"></output></div>
+      <div class="why" id="customWhy"></div>
+    </div>
+    <ol class="rules" id="rules"></ol>
+  </section>
+
+  <section id="join">
+    <div class="join">
+      <div class="eyebrow" data-t="joinEye"></div>
+      <h2 style="margin:0" data-t="joinH"></h2>
+      <ol class="bigsteps" id="steps"></ol>
+      <div class="paths">
+        <div class="path m-pt"><h3 data-t="ptH"></h3><ol id="ptSteps"></ol><p class="note" data-t="ptNote"></p></div>
+        <div class="path m-gt"><h3 data-t="gtH"></h3><ol id="gtSteps"></ol></div>
+      </div>
+      <p class="coach" data-t="coachNote"></p>
+      <p class="q" data-t="questions"></p>
+      <a class="btn btn-wa wa" style="align-self:flex-start" href="https://wa.me/message/ZJIHILSNG2MVH1" target="_blank" rel="noopener"><span data-t="cta"></span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="links">
+    <a href="https://www.instagram.com/inches.sportsperformance/" target="_blank" rel="noopener">Instagram @inches.sportsperformance</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Zohour+Club+Nasr+City+Cairo" target="_blank" rel="noopener" data-t="map"></a>
+  </div>
+  <div style="margin-bottom:10px"><span data-t="call"></span> <span class="phone" id="phone">01128485842</span> <button class="copy" id="copyPhone" data-t="copy"></button></div>
+  <div><span class="motto">Every <b>inch</b> counts</span></div>
+</footer>
+
+<div class="bar"><a class="btn btn-wa wa" href="https://wa.me/message/ZJIHILSNG2MVH1" target="_blank" rel="noopener"><span data-t="cta"></span></a></div>
+
+<script>
+/* ===== SCHEDULE — edit here each month ===== */
+const MONTH = {en:"November schedule", ar:"جدول شهر نوفمبر"};
+// group: fit = Fitness (Adults), ath = Athletic Performance, kid = Rising Stars
+const SCHEDULE = {
+  sat:[["10:00","AM","Burn (HYROX)","fit"],["6:00","PM","Mobility","fit"],["6:00","PM","Rising Stars","kid"],["7:00","PM","Athletic STR","ath"],["8:00","PM","Burn (Circuits)","fit"]],
+  sun:[["7:00","PM","Athletic Grind","ath"],["8:00","PM","Endurun","fit"],["8:00","PM","Build","fit"]],
+  mon:[["7:30","PM","Lift","fit"],["8:30","PM","Burn (HYROX)","fit"]],
+  tue:[["6:00","PM","Rising Stars","kid"],["7:00","PM","Speed & Agility","ath"],["8:00","PM","Build","fit"]],
+  wed:[["7:30","PM","Gymnastics","fit"],["8:30","PM","Burn (HYROX)","fit"]],
+  thu:[["7:00","PM","Burn (Circuits)","fit"],["8:00","PM","Build","fit"]],
+  fri:[["8:00","AM","Endurun","fit"],["9:30","AM","Build","fit"]]
+};
+/* ========================================= */
+
+const DAYS = ["sat","sun","mon","tue","wed","thu","fri"];
+const DAYN = {en:{sat:"Saturday",sun:"Sunday",mon:"Monday",tue:"Tuesday",wed:"Wednesday",thu:"Thursday",fri:"Friday"},
+              ar:{sat:"السبت",sun:"الأحد",mon:"الاثنين",tue:"الثلاثاء",wed:"الأربعاء",thu:"الخميس",fri:"الجمعة"}};
+const GROUPN = {en:{fit:"Fitness (Adults)",ath:"Athletic Performance",kid:"Rising Stars (Kids)"},
+                ar:{fit:"لياقة (للكبار)",ath:"الأداء الرياضي",kid:"النجوم الصاعدة (أطفال)"}};
+const GCOL = {fit:"var(--white)",ath:"var(--red)",kid:"#e8a33a"};
+
+const T = {
+ en:{
+  where:"Zohour Club · Nasr City · Cairo",
+  h1:"Sports performance for every athlete",
+  lede:"Performance training for all sports, rehab after injury, and group classes in functional fitness, HYROX and CrossFit-style training. Personal training for any goal. Led by professional coaches.",
+  cta:"Ask to join on WhatsApp", seeSched:"See the schedule",
+  aboutEye:"Who we are", aboutH:"What Inches does",
+  about1:"Inches is a sports performance facility at Zohour Club in Nasr City. We work with athletes from every sport, with people coming back from injury, and with anyone who wants to get fitter, stronger and move better.",
+  about2:"Every class is coached. Programs are planned and progress over time, so each session builds on the last one.",
+  svcEye:"Services", svcH:"What we offer",
+  svc:[
+   ["Functional Fitness","Adults","Conditioning, strength, barbell lifting, gymnastics, running and mobility, including HYROX and CrossFit-style training. For anyone who wants to get fitter, stronger and move better.",["pt","gt"]],
+   ["Rehab","After injury","Rebuild strength and movement after an injury and get back to training and sport. Mostly done one-on-one.",["pt"]],
+   ["Sports Performance","Athletes · any sport","Strength, power, speed, agility and conditioning, built around what your sport demands. Classes: Athletic STR, Athletic Grind, Speed & Agility.",["pt","gt"]],
+   ["Rising Stars","Kids","Our youth program. Builds movement foundations, coordination and confidence in young athletes.",["pt","gt"]]
+  ],
+  modesH:"Every service comes in two formats",
+  modes:{pt:["Personal Training","One-on-one with a coach, built around your goal. 2 points per session."],gt:["Group Training","Coached classes on the weekly schedule. 1 point per class."]},
+  modeShort:{pt:"Personal",gt:"Group"},
+  clsEye:"Classes", clsH:"Which class is for you?",
+  burnNote:"Two formats on the schedule: HYROX and Circuits.",
+  grindNote:"Brings all the physical qualities together in mixed-modal conditioning.",
+  schEye:"Weekly schedule", schH:"Find your session", today:"Today",
+  joinEye:"How to start", joinH:"Start training at Inches",
+  steps:["Decide what you want: the service (Functional Fitness, Rehab, Sports Performance or Rising Stars) and the format (personal or group training).","Download the Inches app.","Follow the steps for your format below."],
+  ptH:"Personal training", ptSteps:["Open the app and go to your coach's available slots.","Book the slots that suit you."],
+  ptNote:"Your booked slots repeat every week until you remove them from the app.",
+  gtH:"Group training", gtSteps:["Check the weekly schedule.","Show up for your class. No booking needed."],
+  coachNote:"Before your first session, talk to your coach about your goals, training history and any injuries.",
+  questions:"Questions before you start? Message us on WhatsApp.",
+  prEye:"Prices", prH:"How our points work",
+  howG:"point = 1 group class", howGs:"Any class on the schedule",
+  howPT:"points = 1 personal training session", howPTs:"One-on-one with a coach, including most rehab",
+  std:"Standard price", mem:"Zohour Club member",
+  pk:{White:"White",Red:"Red",Black:"Black",Bronze:"Bronze",Silver:"Silver",Gold:"Gold"},
+  point:"point", points:"points", egp:"EGP", perPt:"EGP / point",
+  eq:(p,pt)=> p===1 ? "= 1 group class" : `= ${p} group classes, or ${pt} personal training sessions, or any mix`,
+  calcL:"Need a different number of points? Enter it here:",
+  calcBad:"Enter a number of points.",
+  calcWhy:(n,pk,per,tot,m)=>`${n} points are priced at the ${pk} package rate (the biggest package you reach): ${n} × ${per} = ${tot} EGP${m?" for Zohour members":""}.`,
+  rules:["Points are valid for one year from the date you buy them.","Packages can be shared with other people, but they can't be refunded.","Zohour member packages can only be shared with other Zohour members.","Bigger packages cost less per point, so buy the size you'll actually use within the year."],
+  call:"Call or WhatsApp:", copy:"Copy", copied:"Copied",
+  map:"Zohour Club on Google Maps", empty:"No classes this day."
+ },
+ ar:{
+  where:"نادي الزهور · مدينة نصر · القاهرة",
+  h1:"أداء رياضي لكل رياضي",
+  lede:"تدريب أداء لكل الرياضات، تأهيل بعد الإصابة، وكلاسات جماعية للياقة الوظيفية والهايروكس والتمارين على طريقة الكروسفت. وتدريب شخصي لأي هدف. تحت إشراف مدربين محترفين.",
+  cta:"اطلب الانضمام على واتساب", seeSched:"شوف الجدول",
+  aboutEye:"إحنا مين", aboutH:"إنشز بتعمل إيه",
+  about1:"إنشز مركز للأداء الرياضي في نادي الزهور بمدينة نصر. بنشتغل مع رياضيين من كل الرياضات، ومع اللي راجعين من إصابة، ومع أي حد عايز يبقى أقوى ولياقته أحسن وحركته أفضل.",
+  about2:"كل كلاس تحت إشراف مدرب. البرامج متخططة ومتدرجة، فكل سيشن بتبني على اللي قبلها.",
+  svcEye:"خدماتنا", svcH:"بنقدّم إيه",
+  svc:[
+   ["اللياقة الوظيفية","للكبار","تحمّل، قوة، رفع أثقال بالبار، جمباز، جري ومرونة، وفيها تدريب هايروكس وتمارين على طريقة الكروسفت. لأي حد عايز لياقته تبقى أحسن وجسمه أقوى وحركته أفضل.",["pt","gt"]],
+   ["التأهيل","بعد الإصابة","ترجّع قوتك وحركتك بعد الإصابة وترجع للتمرين والرياضة. غالباً بيكون برايفت.",["pt"]],
+   ["الأداء الرياضي","رياضيين · أي رياضة","قوة، انفجارية، سرعة، رشاقة وتحمّل، على حسب احتياجات رياضتك. الكلاسات: Athletic STR و Athletic Grind و Speed & Agility.",["pt","gt"]],
+   ["النجوم الصاعدة","للأطفال","برنامج الناشئين عندنا. بيبني أساسيات الحركة والتوافق الحركي والثقة بالنفس عند الرياضيين الصغيرين.",["pt","gt"]]
+  ],
+  modesH:"كل خدمة متاحة بطريقتين",
+  modes:{pt:["تدريب شخصي","برايفت مع مدرب، ببرنامج مبني على هدفك. 2 نقطة للسيشن."],gt:["تدريب جماعي","كلاسات تحت إشراف مدرب في الجدول الأسبوعي. نقطة واحدة للكلاس."]},
+  modeShort:{pt:"برايفت",gt:"جماعي"},
+  clsEye:"الكلاسات", clsH:"أنهي كلاس مناسب ليك؟",
+  burnNote:"نوعين في الجدول: هايروكس وسيركيت.",
+  grindNote:"بيجمع كل الصفات البدنية في تمرين كوندشنينج مختلط.",
+  schEye:"الجدول الأسبوعي", schH:"اختار السيشن بتاعتك", today:"النهارده",
+  joinEye:"إزاي تبدأ", joinH:"ابدأ تمرينك في إنشز",
+  steps:["حدد انت عايز إيه: الخدمة (لياقة وظيفية، تأهيل، أداء رياضي أو النجوم الصاعدة) وطريقة التمرين (تدريب شخصي أو جماعي).","نزّل أبلكيشن إنشز.","اتبع الخطوات الخاصة بطريقة تمرينك تحت."],
+  ptH:"التدريب الشخصي", ptSteps:["افتح الأبلكيشن وادخل على المواعيد المتاحة للكوتش بتاعك.","احجز المواعيد اللي تناسبك."],
+  ptNote:"المواعيد اللي بتحجزها بتتكرر كل أسبوع لحد ما تشيلها من الأبلكيشن.",
+  gtH:"التدريب الجماعي", gtSteps:["شوف الجدول الأسبوعي.","تعالى على ميعاد الكلاس على طول. مش محتاج تحجز."],
+  coachNote:"قبل أول سيشن، اتكلم مع الكوتش بتاعك عن أهدافك وتاريخك في التمرين وأي إصابات.",
+  questions:"عندك أسئلة قبل ما تبدأ؟ كلمنا على واتساب.",
+  prEye:"الأسعار", prH:"نظام النقاط عندنا",
+  howG:"نقطة = كلاس جماعي واحد", howGs:"أي كلاس في الجدول",
+  howPT:"نقطة = سيشن تدريب شخصي واحدة", howPTs:"برايفت مع مدرب، ومنها أغلب جلسات التأهيل",
+  std:"السعر العادي", mem:"عضو نادي الزهور",
+  pk:{White:"أبيض",Red:"أحمر",Black:"أسود",Bronze:"برونزي",Silver:"فضي",Gold:"ذهبي"},
+  point:"نقطة", points:"نقطة", egp:"جنيه", perPt:"جنيه / نقطة",
+  eq:(p,pt)=> p===1 ? "= كلاس جماعي واحد" : `= ${p} كلاس جماعي، أو ${pt} سيشن تدريب شخصي، أو مزيج من الاتنين`,
+  calcL:"محتاج عدد نقاط مختلف؟ اكتبه هنا:",
+  calcBad:"اكتب عدد النقاط.",
+  calcWhy:(n,pk,per,tot,m)=>`${n} نقطة بتتحسب بسعر نقطة باكدج ${pk} (أكبر باكدج وصلتله): ${n} × ${per} = ${tot} جنيه${m?" لأعضاء نادي الزهور":""}.`,
+  rules:["النقاط صالحة لمدة سنة من تاريخ الشراء.","الباكدجات ممكن تتشارك مع أشخاص تانيين، لكن مش بتترد فلوسها.","باكدجات أعضاء نادي الزهور بتتشارك مع أعضاء النادي بس.","كل ما الباكدج أكبر، سعر النقطة بيقل، فاختار الحجم اللي هتستخدمه فعلاً خلال السنة."],
+  call:"اتصل أو كلمنا واتساب:", copy:"نسخ", copied:"اتنسخ",
+  map:"نادي الزهور على خرائط جوجل", empty:"مفيش كلاسات اليوم ده."
+ }
+};
+
+const CLASSES = {
+ fit:[
+  ["Burn",{en:"Cardio · High intensity · Metabolic",ar:"كارديو · شدة عالية · ميتابوليك"},"burnNote"],
+  ["Build",{en:"Strength · Progression · Muscle failure",ar:"قوة · تدرّج · الوصول للفشل العضلي"}],
+  ["Lift",{en:"Barbell · Power · Technique",ar:"البار · قوة انفجارية · تكنيك"}],
+  ["Gymnastics",{en:"Bodyweight · Control · Mobility · Skills",ar:"وزن الجسم · تحكّم · مرونة · مهارات"}],
+  ["Endurun",{en:"Endurance-based · Running plan · Quality drills",ar:"تحمّل · خطة جري · دريلز بجودة عالية"}],
+  ["Mobility",{en:"Range of motion · Recovery · Longevity",ar:"مدى الحركة · استشفاء · استمرارية"}]
+ ],
+ ath:[
+  ["Athletic STR",{en:"Power · Stability · Performance · Sport-specific",ar:"انفجارية · ثبات · أداء · حسب الرياضة"}],
+  ["Athletic Grind",{en:"Mixed-modal conditioning",ar:"كوندشنينج مختلط"},"grindNote"],
+  ["Speed & Agility",{en:"Acceleration · Change of direction · Reactivity",ar:"تسارع · تغيير اتجاه · سرعة رد الفعل"}]
+ ],
+ kid:[
+  ["Rising Stars",{en:"Foundations · Coordination · Confidence",ar:"أساسيات · توافق حركي · ثقة"}]
+ ]
+};
+
+
+/* ===== PRICES (EGP) ===== [name, points, price, member price] */
+const PACKS = [["White",1,200,160],["Red",10,1600,1350],["Black",30,4500,3750],["Bronze",50,6500,5750],["Silver",120,13800,12000],["Gold",300,30000,27000]];
+const PCOL = {White:["#fff","#050303"],Red:["#c72333","#fff"],Black:["#000","#fff"],Bronze:["#c87c1a","#050303"],Silver:["#a7a7a7","#050303"],Gold:["#c9b21e","#050303"]};
+let who="std";
+const fmt = n => n.toLocaleString("en-US");
+function rateFor(pts){ // per-point price of the biggest package that the amount reaches
+  let r=null; for(const p of PACKS){ if(pts>=p[1]) r=p; } return r;
+}
+function renderPrices(){
+  const t=T[lang], m = who==="mem";
+  document.querySelectorAll(".seg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.who===who));
+  document.getElementById("pk").innerHTML = PACKS.map(p=>{
+    const price = m?p[3]:p[2], per = price/p[1], c=PCOL[p[0]];
+    const pt = Math.floor(p[1]/2);
+    return `<div class="p"><span class="chip" style="background:${c[0]};color:${c[1]};${p[0]==="Black"?"border:1px solid #555":""}">${esc(t.pk[p[0]])}</span>
+      <span class="pts">${p[1]} <small style="font-size:13px;color:var(--mute)">${esc(p[1]===1?t.point:t.points)}</small></span>
+      <span class="pr">${fmt(price)} <small style="font-size:12px">${esc(t.egp)}</small></span>
+      <span></span><span class="pp">${fmt(per)} ${esc(t.perPt)}</span>
+      <span class="eq">${esc(t.eq(p[1],pt))}</span></div>`;
+  }).join("");
+  calc();
+}
+function calc(){
+  const t=T[lang], m=who==="mem"; let n=parseInt(document.getElementById("custom").value,10);
+  const out=document.getElementById("customOut"), why=document.getElementById("customWhy");
+  if(!n||n<1){out.textContent="";why.textContent=t.calcBad;return}
+  const r=rateFor(n), per=(m?r[3]:r[2])/r[1], tot=n*per;
+  out.textContent = `${fmt(tot)} ${t.egp}`;
+  why.textContent = t.calcWhy(n, t.pk[r[0]], fmt(per), fmt(tot), m);
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest(".seg button"); if(b){who=b.dataset.who; renderPrices()}
+  if(e.target.id==="copyPhone"){
+    const btn=e.target, num="01128485842";
+    const done=()=>{btn.textContent=T[lang].copied; setTimeout(()=>btn.textContent=T[lang].copy,1500)};
+    try{ navigator.clipboard.writeText(num).then(done,()=>sel()) }catch(_){ sel() }
+    function sel(){ const r=document.createRange(); r.selectNodeContents(document.getElementById("phone")); const s=getSelection(); s.removeAllRanges(); s.addRange(r) }
+  }
+});
+document.addEventListener("input",e=>{ if(e.target.id==="custom") calc() });
+
+let lang = "en", day = null;
+function cairoDay(){
+  try{
+    const w = new Intl.DateTimeFormat("en-US",{weekday:"short",timeZone:"Africa/Cairo"}).format(new Date()).toLowerCase().slice(0,3);
+    return DAYS.includes(w)?w:"sat";
+  }catch(e){return "sat"}
+}
+const TODAY = cairoDay();
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+function render(){
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-t]").forEach(el=>{ el.textContent = t[el.dataset.t] ?? "" });
+  document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed", b.dataset.lang===lang));
+
+  document.getElementById("svc").innerHTML = t.svc.map(s=>`<article><span class="who">${esc(s[1])}</span><h3>${esc(s[0])}</h3><p>${esc(s[2])}</p><div class="fmt">${s[3].map(m=>`<span class="f f-${m}">${esc(t.modeShort[m])}</span>`).join("")}</div></article>`).join("");
+  document.getElementById("modes").innerHTML = ["pt","gt"].map(m=>`<div class="mode m-${m}"><b>${m==="pt"?2:1}</b><div><h4>${esc(t.modes[m][0])}</h4><p>${esc(t.modes[m][1])}</p></div></div>`).join("");
+
+  document.getElementById("groups").innerHTML = Object.keys(CLASSES).map(g=>`
+    <div class="group"><h3><span class="dot" style="background:${GCOL[g]}"></span>${esc(GROUPN[lang][g])}</h3>
+    <div class="cls">${CLASSES[g].map(c=>`<div class="c g-${g}"><h4>${esc(c[0])}</h4><div class="tags">${esc(c[1][lang])}</div>${c[2]?`<p>${esc(t[c[2]])}</p>`:""}</div>`).join("")}</div></div>`).join("");
+
+  document.getElementById("days").innerHTML = DAYS.map(d=>`<button id="day-${d}" data-day="${d}" aria-pressed="${d===day}">${d===TODAY?`<span class="today">${esc(t.today)}</span>`:""}${esc(DAYN[lang][d])}</button>`).join("");
+  document.getElementById("days").setAttribute("aria-label", t.schH);
+  renderSlots();
+  document.getElementById("legend").innerHTML = Object.keys(GROUPN.en).map(g=>`<span><span class="dot" style="background:${GCOL[g]}"></span>${esc(GROUPN[lang][g])}</span>`).join("");
+  renderPrices();
+  document.getElementById("rules").innerHTML = t.rules.map(r=>`<li>${esc(r)}</li>`).join("");
+  document.getElementById("ptSteps").innerHTML = t.ptSteps.map(x=>`<li>${esc(x)}</li>`).join("");
+  document.getElementById("gtSteps").innerHTML = t.gtSteps.map(x=>`<li>${esc(x)}</li>`).join("");
+  document.getElementById("steps").innerHTML = t.steps.map(s=>`<li>${esc(s)}</li>`).join("");
+}
+function toMin(h,ap){let [H,M]=h.split(":").map(Number); if(ap==="PM"&&H!==12)H+=12; if(ap==="AM"&&H===12)H=0; return H*60+M}
+function renderSlots(){
+  const t=T[lang], list=(SCHEDULE[day]||[]).slice().sort((a,b)=>toMin(a[0],a[1])-toMin(b[0],b[1]));
+  const ap = x => lang==="ar" ? (x==="AM"?"ص":"م") : x;
+  document.getElementById("slots").innerHTML = list.length ? list.map(s=>`
+    <li class="slot g-${s[3]}" style="--tag:${GCOL[s[3]]}"><time>${s[0]} ${ap(s[1])}</time><div><div class="n">${esc(s[2])}</div><div class="g">${esc(GROUPN[lang][s[3]])}</div></div></li>`).join("")
+    : `<li class="slot"><div></div><div class="g">${esc(t.empty)}</div></li>`;
+}
+document.addEventListener("click",e=>{
+  const l=e.target.closest(".lang button"); if(l){lang=l.dataset.lang; try{localStorage.setItem("inches-lang",lang)}catch(_){} render(); return}
+  const d=e.target.closest("#days button"); if(d){day=d.dataset.day; document.querySelectorAll("#days button").forEach(b=>b.setAttribute("aria-pressed",b===d)); renderSlots()}
+});
+try{ const s=localStorage.getItem("inches-lang"); if(s==="ar"||s==="en") lang=s; else if((navigator.language||"").startsWith("ar")) lang="ar"; }catch(_){}
+day = TODAY;
+render();
+</script>
